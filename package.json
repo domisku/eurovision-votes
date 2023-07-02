@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.ts"
+    "start": "nodemon app.ts",
+    "build": "yarn install --production --frozen-lockfile",
+    "start:prod": "ts-node app.ts"
   },
   "keywords": [],
   "author": "",
