@@ -1,0 +1,11 @@
+td {
+  vertical-align: middle !important;
+}
+
+thead td {
+  font-weight: bold;
+}
+
+table {
+  overflow: hidden;
+}

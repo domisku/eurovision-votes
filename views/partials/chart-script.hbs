@@ -1,0 +1,37 @@
+<script>
+    const templateChartData = {{{json chartData}}};
+    const labels = templateChartData.map((data) => data.edition.slice(0, -1));
+    const percentages = templateChartData.map((data) => data.percentage);
+    const ctx = document.getElementById('chart'); 
+    new Chart(ctx, { type: 'line', data: {  labels: labels,
+        datasets: 
+        [
+            {
+                label: 'Percentage of total edition points received (finals)',
+                data: percentages,
+                fill: false,
+                borderColor: 'hsl(204, 86%, 53%)',
+                tension: 0.1
+            }   
+        ]},
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        text: 'Edition year',
+                        display: true,
+                    }
+                    
+                },
+                 y: {
+                    title: {
+                        text: '%',
+                        display: true,
+                    }
+                    
+                },
+            }
+        }
+         },
+       )
+</script>

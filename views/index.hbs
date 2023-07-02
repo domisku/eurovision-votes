@@ -1,0 +1,90 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eurovision votes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body class="p-6 has-background-white-bis">
+    <h1 class="title">{{country}}</h1>
+    <form action="/" method="get">
+    <div class="field mb-6">
+        <label class="label" for="country">Country</label>
+        <div class="select control is-info">
+            <select id="country" name="country" selected="Lithuania">
+                <option selected disabled hidden>Select country</option>
+                {{#each countries}}
+                    <option>{{this}}</option>
+                {{/each}} 
+            </select>
+        </div>
+    </div>
+    </form>
+    <h2 class="mb-4">Chance to qualify to finals:
+        <strong>
+            {{#if qualifyChance}}
+            {{qualifyChance}} %
+            {{else}}
+            NA
+            {{/if}}
+        </strong>
+    </h2>
+
+<div class="is-flex" style="gap: 2rem;">
+    <div class="is-flex is-flex-direction-column" style="min-width: 25rem;">
+        <table class="table is-flex-grow-1 card">
+            <thead>
+                <tr>
+                    <td colspan="2" style="text-align: center;" class="has-background-primary">
+                        Top 5 voters 💕
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>Votes</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each top5Voters}}
+                    <tr>
+                        <td>{{from_country}}</td>
+                        <td>{{points_sum}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <table class="table is-flex-grow-1 card">
+            <thead>
+                <tr>
+                    <td colspan="2" style="text-align: center;" class="has-background-primary">
+                        Bottom 5 voters 💔
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>Votes</td>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each bottom5Voters}}
+                    <tr>
+                        <td>{{from_country}}</td>
+                        <td>{{points_sum}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <div class="is-flex-grow-1 card p-6">
+      <canvas id="chart"></canvas>
+    </div>
+    
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts/listeners.js"></script>
+    {{>chart_script}}
+    {{>select_script}}
+  </body>
+</html>
