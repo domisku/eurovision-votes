@@ -12,12 +12,6 @@ import {
 const app = express();
 const PORT = 10000;
 
-// app.use(
-//   cors({
-//     origin: "https://eurovision-votes.onrender.com",
-//     methods: "GET",
-//   })
-// );
 app.use(express.json());
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
