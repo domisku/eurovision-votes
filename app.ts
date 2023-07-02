@@ -11,7 +11,7 @@ import {
 } from "./queries/votes";
 
 const app = express();
-const PORT = 8081;
+const PORT = 10000;
 
 app.use(
   cors({
