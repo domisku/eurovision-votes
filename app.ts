@@ -29,6 +29,8 @@ hbs.registerHelper("json", function (obj) {
 hbs.registerPartials(path.join(__dirname, "views/partials"));
 
 app.get("/", async (req, res) => {
+  console.log(req);
+
   try {
     const countries = (await getCountries()).map((c) => c.country);
     const country = (req.query.country as string) ?? countries[0];
